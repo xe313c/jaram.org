@@ -5,8 +5,10 @@
 
 var express = require('express');
 var routes = require('./routes');
+var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
+var crypto = require('crypto');
 
 var app = express();
 
@@ -18,7 +20,10 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(express.cookieParser(crypto.randomBytes(64).toString()));
+app.use(express.session({secret: crypto.randomBytes(64).toString()}));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,6 +33,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/signup', user.signup);
+app.post('/signup', user.new);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
