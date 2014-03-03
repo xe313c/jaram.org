@@ -6,36 +6,78 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='description' content='')
     meta(name='author', content='')
-
-    title='jaram'
-
-    link(rel='stylesheet', href='stylesheets/bootstrap.min.css', type='text/css')
-    link(rel='stylesheet', href='stylesheets/scrolling-nav.css', type='text/css')
     
+    title='Jaram'
+
+    // Bootstrap Core CSS
+    link(rel='stylesheet', href='stylesheets/bootstrap.min.css', type='text/css')
+
+    // Custom CSS
+    link(rel='stylesheet', href='stylesheets/scrolling-nav.css', type='text/css')
+
+  // The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function
   body(id='page-top', data-spy='scroll', data-target='.navbar-fixed-top')
     nav(class='navbar navbar-default navbar-fixed-top' role='navigation')
       div(class='container')
         div(class='navbar-header page-scroll')
           button(type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-ex1-collapse')
-            span(class='sr-only')='toggle navigation'
+            span(class='sr-only') toggle navigation
             span(class='icon-bar')
             span(class='icon-bar')
             span(class='icon-bar')
-          a(class='navbar-brand' href='#page-top')='Start Bootstrap'
+          a(class='navbar-brand' href='#page-top') Jaram
 
+        // Collect the nav links, forms, and other content for toggling
         div(class='collapse navbar-collapse navbar-ex1-collapse')
           ul(class='nav navbar-nav')
+            // Hidden li included to remove active class from about link when scrolled up past about section
             li(class='hidden')
               a(href='#page-top')
             li(class='page-scroll')
-              a(href='#about')='About'
+              a(href='#about') About
             li(class='page-scroll')
-              a(href='#services')='Services'
+              a(href='#services') Services
             li(class='page-scroll')
-              a(href='#contact')='Contact'
-  
-    script(src='js/jquery-1.10.2.js')
-    script(src='js/bootstrap.min.js')
-    script(src='js/jquery.easing.min.js')
+              a(href='#contact') Contact
     
-    script(src='js/scrolling-nav.js')
+    section(id='intro', class='intro-section')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-12')
+            h1='Scrolling Nav'
+            div(class='page-scroll')
+              a(class='btn btn-default', href='#about') Click me!
+            br
+            p='This demo is the same sort of scrolling navigation menu we use in our'
+              a(href='http://startbootstrap.com/grayscale.php')  Grayscale theme
+              | . Whenever you want to use the page scrolling feature, make sure the link points to an ID (
+              code='#about'
+              |  for example), and that the parent of the link has the class 
+              code='.page-scroll'
+              | . See how the button above and the menu bar links are formatted for a working example.
+
+    section(id='about', class='about-section')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-12')
+            h1='About Section'
+
+    section(id='services', class='services-section')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-12')
+            h1='Services Section'
+              
+    section(id='contact', class='contact-section')
+      div(class='container')
+        div(class='row')
+          div(class='col-lg-12')
+            h1='Contact Section'
+              
+    // Core JavaScript Files
+    script(src='javascripts/jquery-1.10.2.js')
+    script(src='javascripts/bootstrap.min.js')
+    script(src='javascripts/jquery.easing.min.js')
+
+    // Custom Theme Javascript
+    script(src='javascripts/scrolling-nav.js')
